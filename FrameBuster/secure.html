@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>보안 페이지</title>
+  <script>
+    // 이 코드를 통해 나의 페이지가 공격자의 페이지로 리디렉션된다.
+    if (top !== self) {
+      top.location = self.location;
+    }
+  </script>
+</head>
+<body>
+<h1>여기는 안전한 페이지입니다.</h1>
+</body>
+</html>
