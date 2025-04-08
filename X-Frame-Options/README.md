@@ -1,0 +1,2 @@
+- X-Frame-Options을 설정하지 않은 need_secure.html은 iframe으로 불러올 수 있다.
+- WebServer를 실행한 후 다시 attacker.html을 불러와보면 iframe으로 접속하지 못함을 확인할 수 있다.
