@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parent Page</title>
+</head>
+<body>
+<h2>Parent Page</h2>
+<button id="sendBtn">Send Message to Child</button>
+
+<iframe id="childFrame" src="child.html" width="500" height="200"></iframe>
+
+<p id="receivedMsg">Message from child: (none)</p>
+
+<script>
+    const iframe = document.getElementById('childFrame');
+    const btn = document.getElementById('sendBtn');
+    const output = document.getElementById('receivedMsg');
+
+    // 자식에게 메시지 보내기
+    btn.addEventListener('click', () => {
+        iframe.contentWindow.postMessage('Hello from parent!', '*');  // '*' 대신 정확한 출처를 써도 됨
+    });
+
+    // 자식에게서 메시지 받기
+    window.addEventListener('message', (event) => {
+        // 보안적으로는 event.origin을 검사해야 함 (예: if (event.origin === "http://b.domain.test"))
+        output.textContent = 'Message from child: ' + event.data;
+    });
+</script>
+</body>
+</html>

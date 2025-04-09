@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Child Page</title>
+</head>
+<body>
+<h2>Child Page (iframe)</h2>
+<p id="msg">Waiting for message...</p>
+
+<script>
+    const display = document.getElementById('msg');
+
+    // 부모로부터 메시지 수신
+    window.addEventListener('message', (event) => {
+        // 보안적으로는 event.origin을 검사해야 함
+        display.textContent = 'Received from parent: ' + event.data;
+
+        // 부모에게 응답 보내기
+        event.source.postMessage('Hi parent, got your message!', event.origin);
+    });
+</script>
+</body>
+</html>
