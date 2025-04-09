@@ -1,0 +1,17 @@
+<button id="send">POST 요청 보내기</button>
+<pre id="result"></pre>
+
+<script>
+    document.getElementById('send').addEventListener('click', () => {
+        fetch('http://localhost:9000/api/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: 'CORS Test' })
+        })
+            .then(res => res.text())
+            .then(text => document.getElementById('result').textContent = text)
+            .catch(err => document.getElementById('result').textContent = '❌ 실패: ' + err);
+    });
+</script>
