@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>a.domain.test</title>
+</head>
+<body>
+<h1>Parent: a.domain.test</h1>
+<iframe src="http://b.domain.test:8001/index.html" id="child" width="500" height="200"></iframe>
+
+<script>
+    // deprecated
+    // document.domain = "domain.test";  // 도메인 완화
+
+    window.onload = () => {
+        const childFrame = document.getElementById("child");
+        setTimeout(() => {
+            try {
+                alert("Child's title: " + childFrame.contentWindow.document.title);
+            } catch (e) {
+                alert("Cannot access child frame: " + e.message);
+            }
+        }, 1000);
+    };
+</script>
+</body>
+</html>
